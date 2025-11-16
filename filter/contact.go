@@ -14,7 +14,7 @@ func physicalAddress(token string) string {
 	return token
 }
 
-func InitContact(text string) string {
+func Contact(text string) string {
 	if text == "" {
 		return text
 	}

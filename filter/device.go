@@ -34,7 +34,7 @@ func imeiCheck(token string) string {
 	return "000000000000000"
 }
 
-func InitDevice(text string) string {
+func Device(text string) string {
 	if text == "" {
 		return text
 	}

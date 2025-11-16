@@ -22,8 +22,8 @@ func main() {
 	}
 
 	content := readFileContent(filename)
-	content = filter.InitDevice(content)
-	content = filter.InitContact(content)
+	content = filter.Device(content)
+	content = filter.Contact(content)
 	fmt.Println(content)
 }
 
