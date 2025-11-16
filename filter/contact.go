@@ -2,16 +2,14 @@ package filter
 
 import (
 	"regexp"
+	"strings"
 )
 
-func physicalAddress(token string) string {
-	var pattern = regexp.MustCompile(`^\d{1,5}[A-Za-z]?\s[A-Za-z0-9\s,\-#]+$`)
+func physicalAddress(text string) []string {
+	pattern := regexp.MustCompile(`(?i)([\w\s.-]+?(?:Avenue|Avn|blvd|Street|str|Location))`)
+	matches := pattern.FindAllString(text, -1)
 
-	if pattern.MatchString(token) {
-		return "00A A0A0 AAA, AAAA, AA 0000"
-	}
-
-	return token
+	return matches
 }
 
 func Contact(text string) string {
@@ -20,14 +18,11 @@ func Contact(text string) string {
 	}
 
 	newText := text
-	tokens := Tokenize(newText)
+	addresses := physicalAddress(text)
 
-	for _, token := range tokens {
-		address := physicalAddress(token)
-		if valid, s := ReplaceFlaggedToken(token, address, newText); valid {
-			newText = s
-			continue
-		}
+	for _, address := range addresses {
+		addr := strings.Trim(address, " ")
+		newText = strings.ReplaceAll(newText, addr, "00A A0A0 AAA, AAAA, AA 0000")
 	}
 
 	return newText
