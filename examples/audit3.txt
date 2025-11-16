@@ -1,0 +1,9 @@
+Entity name: Standard Bank
+Provider: GateMedia
+Device name: iPhone 12 pro max
+IMEI number: 123957801003999
+IP Address: 192.168.9.57
+MAC Address: A4-B5-C6-D7-E8-F9
+
+Physical Address: 23A 10th Avenue, Rivonia, Sandton, 2128
+Physical Address: 2528 Petsana Location
